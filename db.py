@@ -14,18 +14,18 @@ def init_db():
     """)
     conn.commit()
 
-def add_debt(creditor, due_date, summa):
+def add_debt(creditor: str, due_date: str, summa: float):
     cur.execute("""
     INSERT INTO debts (creditor, due_date, summa)
     VALUES (?, ?, ?)
     """, (creditor, due_date, summa))
     conn.commit()
 
-def delete_debt(id):
+def delete_debt(debt_id: int):
     cur.execute("""
     DELETE FROM debts
     WHERE id = ?
-    """, (id,))
+    """, (debt_id,))
     conn.commit()
 
 def get_debts():
